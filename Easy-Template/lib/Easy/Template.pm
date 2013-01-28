@@ -82,24 +82,17 @@ sub output {
                             push @var_names,"\$obj->{'$self'}{param}{$var_name}";
                         }
                         $code .= "(@{ [ join(',',@var_names) ] }) = $right";
-                        eval "$code";
-                        if($@){
-                            chomp $@;
-                            croak "error during evaluating code:$@ at '".$self->file."' $. line ";
-                        }
                     }
                     # return as scalar context
                     else{
                         my ($var_name) = $left =~ /\$([a-zA-Z_][a-zA-Z0-9_]*)/;
-                        my $res;
-                        $code .= '$res = '.$right;
-                        eval "$code";
-                        if($@){
-                            chomp $@;
-                            croak "error during evaluating code:$@ at '".$self->file."' $. line ";
-                        }
                         croak "parameter [$var_name] already exists at '".$self->file."' $. line" if exists $obj->{$self}{param}{$var_name};
-                        $obj->{$self}{param}{$var_name} .= $res;
+                        $code .= "\$obj->{'$self'}{param}{$var_name} = ".$right;
+                    }
+                    eval "$code";
+                    if($@){
+                        chomp $@;
+                        croak "error during evaluating code:$@ at '".$self->file."' $. line ";
                     }
                     next LINE;
                 }
