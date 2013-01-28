@@ -79,7 +79,7 @@ sub output {
                         while($left =~ /\$([a-zA-Z_][a-zA-Z0-9_]*)/g){
                             my $var_name = $1;
                             croak "parameter [$var_name] already exists '".$self->file."' $. line" if exists $obj->{$self}{param}{$var_name};
-                            push @var_names,"\$obj->{$self}{param}{$var_name}";
+                            push @var_names,"\$obj->{'$self'}{param}{$var_name}";
                         }
                         $code .= "(@{ [ join(',',@var_names) ] }) = $right";
                         eval "$code";
