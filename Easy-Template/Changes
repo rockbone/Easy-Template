@@ -1,0 +1,6 @@
+Revision history for Perl extension Easy::Template.
+
+0.01  Mon Jan 28 22:20:01 2013
+	- original version; created by h2xs 1.23 with options
+		-AXn Easy::Template
+

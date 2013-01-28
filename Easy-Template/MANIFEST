@@ -1,0 +1,6 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Easy-Template.t
+lib/Easy/Template.pm
