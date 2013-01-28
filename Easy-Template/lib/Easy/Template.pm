@@ -173,15 +173,15 @@ __END__
 
 =pod
 
-=head1 NAME RB::Template
+=head1 NAME Easy::Template
 
  a very simple template module
 
 =head1 SYNOPSYS
  
- use RB::Template
+ use Easy::Template
  
- my $temp = RB::Template->new('/path/to/template.html','shift-jis');
+ my $temp = Easy::Template->new('/path/to/template.html','shift-jis');
  
  # set param and print
  print $temp->param(hello => 'world')->output;
